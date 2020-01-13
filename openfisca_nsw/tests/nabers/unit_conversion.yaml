@@ -1,0 +1,36 @@
+- name: Converting coal from KG to KWh
+  period: 2020
+  input:
+    coal_in_KG: 20
+  output:
+    coal_KG_to_KWh: 122.777778
+- name: Converting coal from KG to KWh
+  period: 2020
+  input:
+    coal_in_KG: 3.2
+  output:
+    coal_KG_to_KWh: 19.644445
+- name: Converting diesel from litres to KWh
+  period: 2020
+  input:
+    diesel_in_litres: 254
+  output:
+    diesel_litres_to_KWh: 2723.44444
+- name: Converting diesel from litres to KWh
+  period: 2020
+  input:
+    diesel_in_litres: 28
+  output:
+    diesel_litres_to_KWh: 300.2222
+- name: Converting gas from MJ to KWh
+  period: 2020
+  input:
+    gas_in_MJ: 212
+  output:
+    gas_MJ_to_KWh: 58.888889
+- name: Converting gas from MJ to KWh
+  period: 2020
+  input:
+    gas_in_MJ: 28
+  output:
+    gas_MJ_to_KWh: 7.777778
