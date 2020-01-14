@@ -35,7 +35,7 @@ class diesel_litres_to_KWh(Variable):
     label = "Formula for converting diesel from litres to kwh"
 
     def formula(buildings, period, parameters):
-        return ((buildings('diesel_in_litres', period) * 38.6)/3.6)
+        return ((buildings('diesel_in_litres', period) * 38.6) / 3.6)
 
 
 class gas_in_MJ(Variable):
