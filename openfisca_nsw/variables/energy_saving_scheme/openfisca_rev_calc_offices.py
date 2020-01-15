@@ -27,6 +27,32 @@ df2.index = df2.Climate_id
 
 # add from filename import function to init.py
 
+postcode = 2042
+
+climate_zone_value = df1.loc[df1['Postcode'] == postcode, 'Climate_zone'].values[0]
+hdd = df2.loc[df2['Climate_id'] == climate_zone_value, 'Hdd'].values[0]
+cdd = df2.loc[df2['Climate_id'] == climate_zone_value, 'Cdd'].values[0]
+
+
+class HDD_18(Variable):
+    value_type = float
+    entity = Building
+    definition_period = ETERNITY
+    label = "The relevant heating days for this building, based on postcode and then climate zone"
+
+    def formula(buildings, period, parameters):
+        return hdd
+
+
+class CDD_15(Variable):
+    value_type = float
+    entity = Building
+    definition_period = ETERNITY
+    label = "The relevant cooling days for this building, based on postcode and then climate zone"
+
+    def formula(buildings, period, parameters):
+        return cdd
+
 
 class benchmark_star_rating(Variable):
     value_type = float
