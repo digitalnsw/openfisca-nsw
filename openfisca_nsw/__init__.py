@@ -6,9 +6,6 @@ from openfisca_core.taxbenefitsystems import TaxBenefitSystem
 
 from openfisca_nsw import entities
 from openfisca_nsw.situation_examples import couple
-import numpy as np
-import pandas as pd
-import math
 
 COUNTRY_DIR = os.path.dirname(os.path.abspath(__file__))
 
