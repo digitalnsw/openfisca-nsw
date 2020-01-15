@@ -3,9 +3,9 @@
 import os
 
 from openfisca_core.taxbenefitsystems import TaxBenefitSystem
-
 from openfisca_nsw import entities
 from openfisca_nsw.situation_examples import couple
+
 
 COUNTRY_DIR = os.path.dirname(os.path.abspath(__file__))
 
