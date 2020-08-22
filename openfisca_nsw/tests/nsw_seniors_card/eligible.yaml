@@ -1,8 +1,8 @@
 - name: Eligible
   period: 2019-02
   input:
-    is_permanent_nsw_resident: true
-    nsw_seniors_card_works_under_20hrs: true
+#    is_permanent_nsw_resident: 'yes'
+    nsw_seniors_card_works_under_20hrs: 'yes'
     birth: 1959-01
   output:
-    nsw_seniors_card_person_is_eligible: true
+    nsw_seniors_card_person_is_eligible: qualified
