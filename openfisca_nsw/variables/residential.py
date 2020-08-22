@@ -2,6 +2,16 @@
 from openfisca_core.model_api import *
 # Import the Entities specifically defined for this tax and benefit system
 from openfisca_nsw.entities import *
+from openfisca_nsw.variables.return_type import *
+
+
+class is_nsw_resident_enum(Variable):
+    value_type = Enum
+    possible_values = ReturnType
+    entity = Person
+    definition_period = MONTH
+    default_value = ReturnType.unknown
+    label = "is a resident of New South Wales"
 
 
 class is_nsw_resident(Variable):

@@ -3,11 +3,15 @@ from openfisca_core.model_api import *
 # Import the Entities specifically defined for this tax and benefit system
 from openfisca_nsw.entities import *
 
+from openfisca_nsw.variables.return_type import ReturnType
+
 
 class has_valid_medicare_card(Variable):
-    value_type = bool
+    value_type = Enum
+    possible_values = ReturnType
     entity = Person
     definition_period = MONTH
+    default_value = ReturnType.unknown
     label = "has a valid Medicare card"
 
 

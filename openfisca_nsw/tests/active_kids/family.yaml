@@ -1,0 +1,38 @@
+- name: Entitled Parent applicant, living with Aunty
+  period: 2019-01
+  input:
+    persons:
+      parent1:
+        relationship: 'parent'
+      child1:
+        is_nsw_resident_enum: 'yes'
+        has_valid_medicare_card: 'yes'
+        is_enrolled_in_school: 'yes'
+        active_kids__already_issued_in_calendar_year: 'no'
+        birth: 2014-01-01
+      aunty:
+        is_nsw_resident_enum: 'yes'
+    families:
+      smith:
+        parents: [parent1]
+        children: [child1]
+        others: [aunty]
+    organisations:
+      "anyOrg":
+        others: [parent1, child1, aunty]
+    buildings:
+      "anyBuilding":
+        others: [parent1, child1, aunty]
+  output:
+    active_kids__child_meets_criteria:
+      - disqualified
+      - qualified
+      - disqualified
+    active_kids__voucher_amount:
+      - 0
+      - 100
+      - 0
+    active_kids__is_eligible:
+      - qualified
+      - unknown # The child is not a parent, so not eligible (but also not disqualified)
+      - unknown # Aunty's eligibility is unknown

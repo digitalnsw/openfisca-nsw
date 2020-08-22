@@ -5,9 +5,12 @@ from openfisca_nsw.entities import *
 
 
 class ReturnType(Enum):
-    qualified = u"You are eligible for this"
-    disqualified = u"You are not eligible for this"
-    unknown = u"Based on what we know, you may be eligible for this"
+    qualified = u"All criteria met"
+    disqualified = u"At least 1 criteria not met"
+    unknown = u"Calculation incomplete, or variable not asked"
+    yes = u"Variable confirmed as positive/true"
+    no = u"Variable confirmed as negative/false"
+    ignored = u"Variable answer declined or ignored"
 
 
 class return_type(Variable):
@@ -17,4 +20,4 @@ class return_type(Variable):
     entity = Person
     definition_period = ETERNITY
     label = u""
-    reference = 'Active Kids'
+    reference = 'Status for calculations'
