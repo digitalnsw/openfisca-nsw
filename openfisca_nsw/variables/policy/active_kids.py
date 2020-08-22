@@ -9,6 +9,8 @@ from openfisca_core.model_api import *
 # Import the Entities specifically defined for this tax and benefit system
 from openfisca_nsw.entities import *
 
+from openfisca_nsw.variables.return_type import ReturnType
+
 
 class active_kids__already_issued_in_calendar_year(Variable):
     value_type = bool
@@ -30,23 +32,33 @@ class active_kids__voucher_amount(Variable):
 
 
 class active_kids__child_meets_criteria(Variable):
-    value_type = bool
+    value_type = Enum
+    possible_values = ReturnType
     entity = Person
     definition_period = MONTH
+    default_value = ReturnType.unknown
     label = "child meets criteria for Active Kids"
     reference = 'https://sport.nsw.gov.au/sectordevelopment/activekids'
 
     def formula(persons, period, parameters):
+        rt = persons('return_type', period)
+        RT = rt.possible_values
         min_age_in_months = 12 * parameters(period).active_kids.min_age
         max_age_in_months = 12 * parameters(period).active_kids.max_age
         age_in_months = persons('age_in_months', period)
-        return (
-            persons('is_nsw_resident', period)
+
+        return select(
+            [(persons('is_nsw_resident', period)
             * persons('is_enrolled_in_school', period)
             * not_(persons('active_kids__already_issued_in_calendar_year', period.this_year))
             * persons('has_valid_medicare_card', period)
-            * (age_in_months >= min_age_in_months) * (age_in_months < max_age_in_months)
-            )
+            * (age_in_months >= min_age_in_months) * (age_in_months < max_age_in_months)),
+            (not_(persons('is_nsw_resident', period))
+            * not_(persons('is_enrolled_in_school', period))
+            * (persons('active_kids__already_issued_in_calendar_year', period.this_year))
+            * not_(persons('has_valid_medicare_card', period))
+            * not_(age_in_months >= min_age_in_months) * (age_in_months < max_age_in_months))],
+            [RT.qualified, RT.disqualified])
 
 
 class active_kids__is_eligible(Variable):
