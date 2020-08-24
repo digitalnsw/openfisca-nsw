@@ -1,110 +1,110 @@
 - name: Eligible - has NSW seniors card
   period: 2019-01
   input:
-    has_nsw_seniors_card: true
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
+    has_nsw_seniors_card_enum: 'yes'
+    has_act_seniors_card_enum: 'no'
+    has_nt_seniors_card_enum: 'no'
+    has_qld_seniors_card_enum: 'no'
+    has_sa_seniors_card_enum: 'no'
+    has_tas_seniors_card_enum: 'no'
+    has_vic_seniors_card_enum: 'no'
+    has_wa_seniors_card_enum: 'no'
   output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has ACT seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: true
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has NT seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: true
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has QLD seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: true
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has SA seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: true
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has TAS seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: true
-    has_vic_seniors_card: false
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has VIC seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: true
-    has_wa_seniors_card: false
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has WA seniors card
-  period: 2019-01
-  input:
-    has_nsw_seniors_card: false
-    has_act_seniors_card: false
-    has_nt_seniors_card: false
-    has_qld_seniors_card: false
-    has_sa_seniors_card: false
-    has_tas_seniors_card: false
-    has_vic_seniors_card: false
-    has_wa_seniors_card: true
-  output:
-    national_parks_seniors_person_is_eligible: true
-- name: Eligible - has any seniors card
-  period: 2019-01
-  input:
-    has_any_seniors_card: true
-  output:
-    national_parks_seniors_person_is_eligible: true
+    national_parks_seniors_person_is_eligible: qualified
+# - name: Eligible - has ACT seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: true
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has NT seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: true
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has QLD seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: true
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has SA seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: true
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has TAS seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: true
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has VIC seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: true
+#     has_wa_seniors_card: false
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has WA seniors card
+#   period: 2019-01
+#   input:
+#     has_nsw_seniors_card: false
+#     has_act_seniors_card: false
+#     has_nt_seniors_card: false
+#     has_qld_seniors_card: false
+#     has_sa_seniors_card: false
+#     has_tas_seniors_card: false
+#     has_vic_seniors_card: false
+#     has_wa_seniors_card: true
+#   output:
+#     national_parks_seniors_person_is_eligible: true
+# - name: Eligible - has any seniors card
+#   period: 2019-01
+#   input:
+#     has_any_seniors_card: true
+#   output:
+#     national_parks_seniors_person_is_eligible: true
