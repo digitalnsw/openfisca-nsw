@@ -20,20 +20,23 @@ class gold_seniors_opal_person_is_eligible(Variable):
     label = "Person is eligible for Gold Pensioners' Opal Card"
 
     def formula(persons, period, parameters):
+        calc_nsw_eligible = persons('nsw_seniors_card_person_is_eligible', period)
+        calc_has_nsw_seniors = persons('has_nsw_seniors_card_enum', period)
+        calc_has_act_seniors = persons('has_act_seniors_card_enum', period)
 
         is_disqualified = (
-            (persons('nsw_seniors_card_person_is_eligible', period) == persons('nsw_seniors_card_person_is_eligible', period).possible_values.no)
-            * (persons('has_nsw_seniors_card_enum', period) == persons('has_nsw_seniors_card_enum', period).possible_values.no)
-            * (persons('has_act_seniors_card_enum', period) == persons('has_act_seniors_card_enum', period).possible_values.no)
+            (calc_nsw_eligible == calc_nsw_eligible.possible_values.no)
+            * (calc_has_nsw_seniors == calc_has_nsw_seniors.possible_values.no)
+            * (calc_has_act_seniors == calc_has_act_seniors.possible_values.no)
             )
 
         is_qualified = (
             (
-                (persons('nsw_seniors_card_person_is_eligible', period) == persons('nsw_seniors_card_person_is_eligible', period).possible_values.yes)
-                * (persons('has_nsw_seniors_card_enum', period) == persons('has_nsw_seniors_card_enum', period).possible_values.yes)
+                (calc_nsw_eligible == calc_nsw_eligible.possible_values.yes)
+                * (calc_has_nsw_seniors == calc_has_nsw_seniors.possible_values.yes)
                 )
-            + (persons('has_nsw_seniors_card_enum', period) == persons('has_nsw_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_act_seniors_card_enum', period) == persons('has_act_seniors_card_enum', period).possible_values.yes)
+            + (calc_has_nsw_seniors == calc_has_nsw_seniors.possible_values.yes)
+            + (calc_has_act_seniors == calc_has_act_seniors.possible_values.yes)
             )
 
         return select(
