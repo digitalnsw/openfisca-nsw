@@ -2,19 +2,34 @@
 from openfisca_core.model_api import *
 # Import the Entities specifically defined for this tax and benefit system
 from openfisca_nsw.entities import *
+from openfisca_nsw.variables.return_type import *
 
 
 class paintball_marker_permit_person_is_eligible(Variable):
-    value_type = bool
+    value_type = Enum
+    possible_values = ReturnType
     entity = Person
     definition_period = MONTH
+    default_value = ReturnType.unknown
     label = "Person is eligible for a marker permit"
 
     def formula(persons, period, parameters):
-        return (
-            persons('paintball_marker_permit_person_has_completed_training', period)
-            * (persons('age', period) >= parameters(period).paintball.min_age)
+        calc_age = persons('age', period)
+        calc_training = persons('paintball_marker_permit_person_has_completed_training', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).paintball.min_age)
+            + (calc_training == calc_training.possible_values.no)
             )
+
+        is_qualified = (
+            (calc_age >= parameters(period).paintball.min_age)
+            * (calc_training == calc_training.possible_values.yes)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
 
 
 class paintball_marker_permit_person_can_be_autoapproved(Variable):
@@ -25,7 +40,7 @@ class paintball_marker_permit_person_can_be_autoapproved(Variable):
 
     def formula(persons, period, parameters):
         return (
-            persons('paintball_marker_permit_person_is_eligible', period)
+            (persons('paintball_marker_permit_person_is_eligible', period) == persons('paintball_marker_permit_person_is_eligible', period).possible_values.qualified)
             * not_(
                 persons('paintball_marker_permit_person_is_convicted_of_relevant_offence', period)
                 + persons('paintball_marker_permit_person_has_had_suspended_or_cancelled', period)
@@ -80,7 +95,9 @@ class paintball_marker_permit_person_is_protected_person(Variable):
 
 
 class paintball_marker_permit_person_has_completed_training(Variable):
-    value_type = bool
+    value_type = Enum
+    possible_values = ReturnType
     entity = Person
     definition_period = MONTH
+    default_value = ReturnType.unknown
     label = "Person has completed training required as outlined in the policy"

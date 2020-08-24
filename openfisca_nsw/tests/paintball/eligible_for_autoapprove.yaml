@@ -1,7 +1,7 @@
 - name: Eligible - is 18 and trained and all declarations are false
   period: 2019-11
   input:
-    paintball_marker_permit_person_has_completed_training: true
+    paintball_marker_permit_person_has_completed_training: 'yes'
     birth: 2000-01-01
     paintball_marker_permit_person_is_convicted_of_relevant_offence: false
     paintball_marker_permit_person_has_had_suspended_or_cancelled: false
@@ -10,5 +10,5 @@
     paintball_marker_permit_person_is_patient: false
     paintball_marker_permit_person_is_protected_person: false
   output:
-    paintball_marker_permit_person_is_eligible: true
+    paintball_marker_permit_person_is_eligible: qualified
     paintball_marker_permit_person_can_be_autoapproved: true

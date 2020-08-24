@@ -1,7 +1,7 @@
 - name: Eligible - is 18 and trained
   period: 2019-11
   input:
-    paintball_marker_permit_person_has_completed_training: true
+    paintball_marker_permit_person_has_completed_training: 'yes'
     birth: 2000-01-01
   output:
-    paintball_marker_permit_person_is_eligible: true
+    paintball_marker_permit_person_is_eligible: qualified
