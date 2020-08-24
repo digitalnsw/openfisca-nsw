@@ -139,11 +139,11 @@ class has_nsw_seniors_card_enum(Variable):
         nsw_seniors_card_person_is_eligible = persons('nsw_seniors_card_person_is_eligible', period)
 
         is_disqualified = (
-            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.no)
+            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.disqualified)
             )
 
         is_qualified = (
-            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.yes)
+            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.qualified)
             )
 
         return select(
