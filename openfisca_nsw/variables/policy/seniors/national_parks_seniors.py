@@ -24,6 +24,7 @@ class national_parks_seniors_person_is_eligible(Variable):
 
         is_disqualified = (
             (calc_any_card == calc_any_card.possible_values.no)
+            + (calc_any_card == calc_any_card.possible_values.disqualified)
             )
 
         is_qualified = (

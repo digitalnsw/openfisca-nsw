@@ -30,6 +30,12 @@ class gold_seniors_opal_person_is_eligible(Variable):
             * (calc_has_act_seniors == calc_has_act_seniors.possible_values.no)
             )
 
+        is_disqualified_by_default = (
+            (calc_nsw_eligible == calc_nsw_eligible.possible_values.disqualified)
+            * (calc_has_nsw_seniors == calc_has_nsw_seniors.possible_values.disqualified)
+            * (calc_has_act_seniors == calc_has_act_seniors.possible_values.disqualified)
+            )
+
         is_qualified = (
             (
                 (calc_nsw_eligible == calc_nsw_eligible.possible_values.yes)
@@ -40,5 +46,5 @@ class gold_seniors_opal_person_is_eligible(Variable):
             )
 
         return select(
-            [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [is_disqualified, is_disqualified_by_default, is_qualified],
+            [ReturnType.disqualified, ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
