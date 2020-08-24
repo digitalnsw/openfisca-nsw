@@ -90,26 +90,35 @@ class has_any_seniors_card_enum(Variable):
 
     def formula(persons, period, parameters):
 
+        has_nsw_seniors_card_enum = persons('has_nsw_seniors_card_enum', period)
+        has_nt_seniors_card_enum = persons('has_nt_seniors_card_enum', period)
+        has_act_seniors_card_enum = persons('has_act_seniors_card_enum', period)
+        has_qld_seniors_card_enum = persons('has_qld_seniors_card_enum', period)
+        has_sa_seniors_card_enum = persons('has_sa_seniors_card_enum', period)
+        has_tas_seniors_card_enum = persons('has_tas_seniors_card_enum', period)
+        has_vic_seniors_card_enum = persons('has_vic_seniors_card_enum', period)
+        has_wa_seniors_card_enum = persons('has_wa_seniors_card_enum', period)
+
         is_disqualified = (
-            (persons('has_nsw_seniors_card_enum', period) == persons('has_nsw_seniors_card_enum', period).possible_values.no)
-            * (persons('has_act_seniors_card_enum', period) == persons('has_act_seniors_card_enum', period).possible_values.no)
-            * (persons('has_nt_seniors_card_enum', period) == persons('has_nt_seniors_card_enum', period).possible_values.no)
-            * (persons('has_qld_seniors_card_enum', period) == persons('has_qld_seniors_card_enum', period).possible_values.no)
-            * (persons('has_sa_seniors_card_enum', period) == persons('has_sa_seniors_card_enum', period).possible_values.no)
-            * (persons('has_tas_seniors_card_enum', period) == persons('has_tas_seniors_card_enum', period).possible_values.no)
-            * (persons('has_vic_seniors_card_enum', period) == persons('has_vic_seniors_card_enum', period).possible_values.no)
-            * (persons('has_wa_seniors_card_enum', period) == persons('has_wa_seniors_card_enum', period).possible_values.no)
+            (has_nsw_seniors_card_enum == has_nsw_seniors_card_enum.possible_values.no)
+            * (has_act_seniors_card_enum == has_act_seniors_card_enum.possible_values.no)
+            * (has_nt_seniors_card_enum == has_nt_seniors_card_enum.possible_values.no)
+            * (has_qld_seniors_card_enum == has_qld_seniors_card_enum.possible_values.no)
+            * (has_sa_seniors_card_enum == has_sa_seniors_card_enum.possible_values.no)
+            * (has_tas_seniors_card_enum == has_tas_seniors_card_enum.possible_values.no)
+            * (has_vic_seniors_card_enum == has_vic_seniors_card_enum.possible_values.no)
+            * (has_wa_seniors_card_enum == has_wa_seniors_card_enum.possible_values.no)
             )
 
         is_qualified = (
-            (persons('has_nsw_seniors_card_enum', period) == persons('has_nsw_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_act_seniors_card_enum', period) == persons('has_act_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_nt_seniors_card_enum', period) == persons('has_nt_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_qld_seniors_card_enum', period) == persons('has_qld_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_sa_seniors_card_enum', period) == persons('has_sa_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_tas_seniors_card_enum', period) == persons('has_tas_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_vic_seniors_card_enum', period) == persons('has_vic_seniors_card_enum', period).possible_values.yes)
-            + (persons('has_wa_seniors_card_enum', period) == persons('has_wa_seniors_card_enum', period).possible_values.yes)
+            (has_nsw_seniors_card_enum == has_nsw_seniors_card_enum.possible_values.yes)
+            + (has_act_seniors_card_enum == has_act_seniors_card_enum.possible_values.yes)
+            + (has_nt_seniors_card_enum == has_nt_seniors_card_enum.possible_values.yes)
+            + (has_qld_seniors_card_enum == has_qld_seniors_card_enum.possible_values.yes)
+            + (has_sa_seniors_card_enum == has_sa_seniors_card_enum.possible_values.yes)
+            + (has_tas_seniors_card_enum == has_tas_seniors_card_enum.possible_values.yes)
+            + (has_vic_seniors_card_enum == has_vic_seniors_card_enum.possible_values.yes)
+            + (has_wa_seniors_card_enum == has_wa_seniors_card_enum.possible_values.yes)
             )
 
         return select(
