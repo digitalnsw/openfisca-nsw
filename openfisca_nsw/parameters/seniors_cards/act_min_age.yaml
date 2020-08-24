@@ -1,0 +1,5 @@
+description: Minimum age for NSW seniors card
+reference: https://www.seniorscard.nsw.gov.au/
+values:
+  1970-01-01:
+    value: 60

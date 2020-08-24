@@ -143,6 +143,22 @@ class has_act_seniors_card_enum(Variable):
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from the Australian Capital Territory."
 
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.act_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.act_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+
 
 class has_nt_seniors_card_enum(Variable):
     value_type = Enum
@@ -151,6 +167,22 @@ class has_nt_seniors_card_enum(Variable):
     definition_period = MONTH
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from the Northern Territory."
+
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.nt_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.nt_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
 
 
 class has_qld_seniors_card_enum(Variable):
@@ -161,6 +193,22 @@ class has_qld_seniors_card_enum(Variable):
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from Queensland."
 
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.qld_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.qld_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+
 
 class has_sa_seniors_card_enum(Variable):
     value_type = Enum
@@ -169,6 +217,22 @@ class has_sa_seniors_card_enum(Variable):
     definition_period = MONTH
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from South Australia."
+
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.sa_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.sa_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
 
 
 class has_tas_seniors_card_enum(Variable):
@@ -179,6 +243,22 @@ class has_tas_seniors_card_enum(Variable):
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from Tasmania."
 
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.tas_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.tas_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+
 
 class has_vic_seniors_card_enum(Variable):
     value_type = Enum
@@ -188,6 +268,22 @@ class has_vic_seniors_card_enum(Variable):
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from Victoria."
 
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.vic_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.vic_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+
 
 class has_wa_seniors_card_enum(Variable):
     value_type = Enum
@@ -196,3 +292,19 @@ class has_wa_seniors_card_enum(Variable):
     definition_period = MONTH
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from Western Australia."
+
+    def formula(persons, period, parameters):
+
+        calc_age = persons('age', period)
+
+        is_disqualified = (
+            (calc_age < parameters(period).seniors_cards.wa_min_age)
+            )
+
+        is_qualified = (
+            (calc_age >= parameters(period).seniors_cards.wa_min_age)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
