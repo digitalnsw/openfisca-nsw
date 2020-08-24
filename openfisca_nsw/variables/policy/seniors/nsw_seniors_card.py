@@ -33,16 +33,17 @@ class nsw_seniors_card_person_is_eligible(Variable):
         calc_age = persons('age', period)
         # calc_is_permanent_nsw_resident = persons('is_permanent_nsw_resident', period)
         calc_nsw_seniors_card_works_under_20hrs = persons('nsw_seniors_card_works_under_20hrs', period)
+        calc_is_nsw_resident_enum = persons('is_nsw_resident_enum', period)
 
         is_disqualified = (
             (calc_age < parameters(period).nsw_seniors_card.min_age)
-            # + not_(persons('is_permanent_nsw_resident', period))
+            + (calc_is_nsw_resident_enum == calc_is_nsw_resident_enum.possible_values.no)
             + (calc_nsw_seniors_card_works_under_20hrs == calc_nsw_seniors_card_works_under_20hrs.possible_values.no)
             )
 
         is_qualified = (
             (calc_age >= parameters(period).nsw_seniors_card.min_age)
-            # * persons('is_permanent_nsw_resident', period)
+            * (calc_is_nsw_resident_enum == calc_is_nsw_resident_enum.possible_values.yes)
             * (calc_nsw_seniors_card_works_under_20hrs == calc_nsw_seniors_card_works_under_20hrs.possible_values.yes)
             )
 

@@ -14,3 +14,10 @@
     birth: 1960-01-01
   output:
     nsw_seniors_card_person_is_eligible: disqualified
+- name: Unknown - 20hrs not provided
+  period: 2019-02
+  input:
+    is_nsw_resident_enum: 'yes'
+    birth: 1950-01-01
+  output:
+    nsw_seniors_card_person_is_eligible: unknown

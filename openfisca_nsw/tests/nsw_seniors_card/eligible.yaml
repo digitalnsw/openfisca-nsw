@@ -1,7 +1,7 @@
 - name: Eligible
   period: 2019-02
   input:
-#    is_permanent_nsw_resident: 'yes'
+    is_nsw_resident_enum: 'yes'
     nsw_seniors_card_works_under_20hrs: 'yes'
     birth: 1959-01
   output:
