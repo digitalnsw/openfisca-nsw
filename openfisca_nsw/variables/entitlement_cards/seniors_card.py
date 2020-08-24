@@ -100,6 +100,17 @@ class has_any_seniors_card_enum(Variable):
         has_wa_seniors_card_enum = persons('has_wa_seniors_card_enum', period)
 
         is_disqualified = (
+            (has_nsw_seniors_card_enum == has_nsw_seniors_card_enum.possible_values.disqualified)
+            * (has_act_seniors_card_enum == has_act_seniors_card_enum.possible_values.disqualified)
+            * (has_nt_seniors_card_enum == has_nt_seniors_card_enum.possible_values.disqualified)
+            * (has_qld_seniors_card_enum == has_qld_seniors_card_enum.possible_values.disqualified)
+            * (has_sa_seniors_card_enum == has_sa_seniors_card_enum.possible_values.disqualified)
+            * (has_tas_seniors_card_enum == has_tas_seniors_card_enum.possible_values.disqualified)
+            * (has_vic_seniors_card_enum == has_vic_seniors_card_enum.possible_values.disqualified)
+            * (has_wa_seniors_card_enum == has_wa_seniors_card_enum.possible_values.disqualified)
+            )
+
+        is_non_holder = (
             (has_nsw_seniors_card_enum == has_nsw_seniors_card_enum.possible_values.no)
             * (has_act_seniors_card_enum == has_act_seniors_card_enum.possible_values.no)
             * (has_nt_seniors_card_enum == has_nt_seniors_card_enum.possible_values.no)
@@ -110,7 +121,7 @@ class has_any_seniors_card_enum(Variable):
             * (has_wa_seniors_card_enum == has_wa_seniors_card_enum.possible_values.no)
             )
 
-        is_qualified = (
+        is_holder = (
             (has_nsw_seniors_card_enum == has_nsw_seniors_card_enum.possible_values.yes)
             + (has_act_seniors_card_enum == has_act_seniors_card_enum.possible_values.yes)
             + (has_nt_seniors_card_enum == has_nt_seniors_card_enum.possible_values.yes)
@@ -122,8 +133,8 @@ class has_any_seniors_card_enum(Variable):
             )
 
         return select(
-            [is_disqualified, is_qualified],
-            [ReturnType.no, ReturnType.yes], default=ReturnType.unknown)
+            [is_disqualified, is_non_holder, is_holder],
+            [ReturnType.disqualified, ReturnType.no, ReturnType.yes], default=ReturnType.unknown)
 
 
 class has_nsw_seniors_card_enum(Variable):
@@ -148,7 +159,7 @@ class has_nsw_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.no, ReturnType.yes], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.yes], default=ReturnType.unknown)
 
 
 class has_act_seniors_card_enum(Variable):
@@ -173,7 +184,7 @@ class has_act_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_nt_seniors_card_enum(Variable):
@@ -198,7 +209,7 @@ class has_nt_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_qld_seniors_card_enum(Variable):
@@ -223,7 +234,7 @@ class has_qld_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_sa_seniors_card_enum(Variable):
@@ -248,7 +259,7 @@ class has_sa_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_tas_seniors_card_enum(Variable):
@@ -273,7 +284,7 @@ class has_tas_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_vic_seniors_card_enum(Variable):
@@ -298,7 +309,7 @@ class has_vic_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
 
 
 class has_wa_seniors_card_enum(Variable):
@@ -323,4 +334,4 @@ class has_wa_seniors_card_enum(Variable):
 
         return select(
             [is_disqualified, is_qualified],
-            [ReturnType.disqualified, ReturnType.qualified], default=ReturnType.unknown)
+            [ReturnType.disqualified, ReturnType.unknown], default=ReturnType.unknown)
