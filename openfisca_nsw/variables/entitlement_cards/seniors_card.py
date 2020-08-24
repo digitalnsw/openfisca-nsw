@@ -134,6 +134,22 @@ class has_nsw_seniors_card_enum(Variable):
     default_value = ReturnType.unknown
     label = "Holds a pensioner concession card from New South Wales."
 
+    def formula(persons, period, parameters):
+
+        nsw_seniors_card_person_is_eligible = persons('nsw_seniors_card_person_is_eligible', period)
+
+        is_disqualified = (
+            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.no)
+            )
+
+        is_qualified = (
+            (nsw_seniors_card_person_is_eligible == nsw_seniors_card_person_is_eligible.possible_values.yes)
+            )
+
+        return select(
+            [is_disqualified, is_qualified],
+            [ReturnType.no, ReturnType.yes], default=ReturnType.unknown)
+
 
 class has_act_seniors_card_enum(Variable):
     value_type = Enum
