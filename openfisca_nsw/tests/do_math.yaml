@@ -1,0 +1,7 @@
+- name: "Get a number"
+  period: 2019-02
+  input:
+    start_with_a_num: 2
+    get_another_num: 5
+  output:
+    add_them_up: 7
