@@ -36,5 +36,4 @@ class add_them_up(Variable):
         response = requests.request("GET", url, headers=headers)
         getNumber = json.loads(response.text)
         theNumber = getNumber[0]
-        print(theNumber)
         return int(theNumber)
