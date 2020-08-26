@@ -5,6 +5,7 @@ from openfisca_nsw.entities import *
 import requests
 import json
 
+
 class start_with_a_num(Variable):
     value_type = int
     entity = Person
